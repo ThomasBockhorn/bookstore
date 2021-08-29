@@ -30,6 +30,8 @@ class BookFactory extends Factory
             'Price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 500),
             'On Sale' => $this->faker->numberBetween($min = 0, $max = 1),
             'Sale Price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 500),
+            'book_sale_start_date' => $this->faker->dateTimeBetween('now', '+1 year'),
+            'book_sale_end_date' => $this->faker->dateTimeBetween('now', '+2 year'),
             'Image' => $this->faker->imageUrl($width = 640, $height = 480)
         ];
     }

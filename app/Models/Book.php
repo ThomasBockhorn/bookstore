@@ -23,6 +23,8 @@ class Book extends Model
         'Price',
         'On Sale',
         'Sale Price',
+        'book_sale_start_date',
+        'book_sale_end_date',
         'Image'
     ];
 }

@@ -20,9 +20,11 @@ class CreateBooksTable extends Migration
             $table->string('Author Last Name');
             $table->string('Category');
             $table->text('Description')->nullable();
-            $table->float('Price');
+            $table->float('Price', 8, 2);
             $table->boolean('On Sale');
-            $table->float('Sale Price')->nullable();
+            $table->float('Sale Price', 8, 2)->nullable();
+            $table->date('book_sale_start_date')->nullable();
+            $table->date('book_sale_end_date')->nullable();
             $table->string('Image');
             $table->timestamps();
         });

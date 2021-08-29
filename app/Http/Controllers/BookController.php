@@ -35,7 +35,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Book::create($request->all());
     }
 
     /**
@@ -80,6 +80,6 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
     }
 }
