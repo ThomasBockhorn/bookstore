@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use App\Models\Book;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class BookTest extends TestCase
