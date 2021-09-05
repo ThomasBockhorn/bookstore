@@ -107,4 +107,21 @@ class BookTest extends TestCase
 
         $response->assertSeeText('Author First Name');
     }
+
+    /**
+     * Test to see if a user can see the edit form
+     * 
+     * @return void
+     */
+    public function test_to_see_if_user_can_see_the_edit_form()
+    {
+        $this->post('/book', $this->book);
+
+        $response = $this->get('book/1');
+
+        $response = $this->get('book/1/edit');
+
+        $response->assertSeeText('Edit');
+        $response->assertSeeText('Author First Name');
+    }
 }
