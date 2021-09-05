@@ -93,4 +93,18 @@ class BookTest extends TestCase
 
         $response->assertSeeText('Author First Name');
     }
+
+    /**
+     * Test to see if a user can see a single record
+     * 
+     * @return void
+     */
+    public function test_to_see_if_user_can_see_a_single_book_record()
+    {
+        $this->post('/book', $this->book);
+
+        $response = $this->get('book/1');
+
+        $response->assertSeeText('Author First Name');
+    }
 }
