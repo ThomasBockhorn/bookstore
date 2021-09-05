@@ -4,6 +4,8 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\Models\Book;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BookTest extends TestCase
 {
@@ -76,5 +78,19 @@ class BookTest extends TestCase
         $this->put('/book/1', $this->book_updated);
 
         $this->assertDatabaseHas('books', $this->book_updated);
+    }
+
+    /**
+     * Test to see if books can be viewed by the user
+     * 
+     * @return void
+     */
+    public function test_to_see_if_user_can_see_collection_of_books()
+    {
+        $this->post('/book', $this->book);
+
+        $response = $this->get('book/');
+
+        $response->assertSeeText('Author First Name');
     }
 }
