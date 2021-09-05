@@ -38,14 +38,25 @@ class BookTest extends TestCase
     ];
 
     /**
+     * This will setup the initial post of data after each test
+     * 
+     */
+    protected function setUp(): void
+    {
+        //initializes setup
+        parent::setUp();
+
+        //Posts book data for each test
+        $this->post('/book', $this->book);
+    }
+
+    /**
      * A basic unit test example.
      *
      * @return void
      */
     public function test_to_see_if_user_can_add_a_book()
     {
-
-        $this->post('/book', $this->book);
 
         $this->assertDatabaseHas('books', $this->book);
     }
@@ -57,8 +68,6 @@ class BookTest extends TestCase
      */
     public function test_to_see_if_a_user_can_delete_a_book()
     {
-
-        $this->post('/book', $this->book);
 
         $this->delete('/book/1', $this->book);
 
@@ -73,8 +82,8 @@ class BookTest extends TestCase
      */
     public function test_to_see_if_a_user_can_edit_a_book()
     {
-        $this->post('/book', $this->book);
 
+        //Updates the book
         $this->put('/book/1', $this->book_updated);
 
         $this->assertDatabaseHas('books', $this->book_updated);
@@ -87,7 +96,6 @@ class BookTest extends TestCase
      */
     public function test_to_see_if_user_can_see_collection_of_books()
     {
-        $this->post('/book', $this->book);
 
         $response = $this->get('book/');
 
@@ -101,7 +109,6 @@ class BookTest extends TestCase
      */
     public function test_to_see_if_user_can_see_a_single_book_record()
     {
-        $this->post('/book', $this->book);
 
         $response = $this->get('book/1');
 
@@ -115,9 +122,6 @@ class BookTest extends TestCase
      */
     public function test_to_see_if_user_can_see_the_edit_form()
     {
-        $this->post('/book', $this->book);
-
-        $response = $this->get('book/1');
 
         $response = $this->get('book/1/edit');
 
