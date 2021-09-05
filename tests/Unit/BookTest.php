@@ -122,4 +122,16 @@ class BookTest extends TestCase
         $response->assertSeeText('Edit');
         $response->assertSeeText('Author First Name');
     }
+
+    /**
+     * Test to see if a user can see the add form
+     * 
+     * @return void
+     */
+    public function test_to_see_if_user_can_see_the_add_form()
+    {
+        $response = $this->get('book/create');
+
+        $response->assertSeeText('Create');
+    }
 }
