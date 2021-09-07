@@ -1,43 +1,16 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Book;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Models\Book;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Tests\Unit\Book\BookTestConstants\BookTestConstants;
 
 class BookTest extends TestCase
 {
     use DatabaseMigrations;
 
-    protected $book = [
-        'id' => 1,
-        'Title' => 'sample title',
-        'Author First Name' => 'Thomas',
-        'Author Last Name' => 'Bockhorn',
-        'Category' => 'Fiction',
-        'Description' => 'Lorem Ipsem Lorem Ipsem',
-        'Price' => 12.58,
-        'On Sale' => 1,
-        'Sale Price' => 10.99,
-        'Image' => '/img/sample_file.jpg'
-    ];
-
-    protected $book_updated = [
-        'id' => 1,
-        'Title' => 'sample title',
-        'Author First Name' => 'Bob',
-        'Author Last Name' => 'Bockhorn',
-        'Category' => 'Fiction',
-        'Description' => 'Lorem Ipsem Lorem Ipsem',
-        'Price' => 12.58,
-        'On Sale' => 1,
-        'Sale Price' => 10.99,
-        'Image' => '/img/sample_file.jpg'
-    ];
-
-    /**
+    /** 
      * This will setup the initial post of data after each test
      * 
      */
@@ -47,17 +20,17 @@ class BookTest extends TestCase
         parent::setUp();
 
         //Posts book data for each test
-        $this->post('/book', $this->book);
+        $this->post('/book', BookTestConstants::BOOK_EXAMPLE);
     }
 
     /**
-     * A basic unit test example.
+     * Test to see if a user can add a book
      *
      * @return void
      */
     public function test_to_see_if_user_can_add_a_book()
     {
-        $this->assertDatabaseHas('books', $this->book);
+        $this->assertDatabaseHas('books', BookTestConstants::BOOK_EXAMPLE);
     }
 
     /**
@@ -67,10 +40,10 @@ class BookTest extends TestCase
      */
     public function test_to_see_if_a_user_can_delete_a_book()
     {
-        $this->delete('/book/1', $this->book);
+        $this->delete('/book/1', BookTestConstants::BOOK_EXAMPLE);
 
         //check if its missing
-        $this->assertDatabaseMissing('books', $this->book);
+        $this->assertDatabaseMissing('books', BookTestConstants::BOOK_EXAMPLE);
     }
 
     /**
@@ -81,9 +54,9 @@ class BookTest extends TestCase
     public function test_to_see_if_a_user_can_edit_a_book()
     {
         //Updates the book
-        $this->put('/book/1', $this->book_updated);
+        $this->put('/book/1', BookTestConstants::BOOK_UPDATED_EXAMPLE);
 
-        $this->assertDatabaseHas('books', $this->book_updated);
+        $this->assertDatabaseHas('books', BookTestConstants::BOOK_UPDATED_EXAMPLE);
     }
 
     /**
