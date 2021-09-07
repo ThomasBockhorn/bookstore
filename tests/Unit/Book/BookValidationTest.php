@@ -2,8 +2,9 @@
 
 namespace Tests\Unit\Book;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\Unit\Book\BookTestConstants\BookTestConstants;
 
 
 class BookValidationTest extends TestCase
@@ -11,29 +12,17 @@ class BookValidationTest extends TestCase
 
     use DatabaseMigrations;
 
-    protected $book = [
-        'id' => 1,
-        'Title' => 'sample title',
-        'Author First Name' => 'Thomas',
-        'Author Last Name' => 'Bockhorn',
-        'Category' => 'Fiction',
-        'Description' => 'Lorem Ipsem Lorem Ipsem',
-        'Price' => 12.58,
-        'On Sale' => 1,
-        'Sale Price' => 10.99,
-        'Image' => '/img/sample_file.jpg'
-    ];
+    /**
+     * Test to see if a user can add the wrong data
+     * 
+     * @return void
+     */
 
-    protected $book_updated = [
-        'id' => 1,
-        'Title' => 'sample title',
-        'Author First Name' => 'Bob',
-        'Author Last Name' => 'Bockhorn',
-        'Category' => 'Fiction',
-        'Description' => 'Lorem Ipsem Lorem Ipsem',
-        'Price' => 12.58,
-        'On Sale' => 1,
-        'Sale Price' => 10.99,
-        'Image' => '/img/sample_file.jpg'
-    ];
+    public function test_to_see_if_user_can_add_wrong_info()
+    {
+
+        $response = $this->post('/book', BookTestConstants::BOOK_WRONG_INFO_EXAMPLE);
+
+        $this->assertDatabaseMissing('books', BookTestConstants::BOOK_WRONG_INFO_EXAMPLE);
+    }
 }

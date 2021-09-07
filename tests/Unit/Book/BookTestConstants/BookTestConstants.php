@@ -30,8 +30,16 @@ class BookTestConstants
         'Image' => '/img/sample_file.jpg'
     ];
 
-    public function return_Book_Example()
-    {
-        return BookTestConstants::BOOK_EXAMPLE;
-    }
+    const BOOK_WRONG_INFO_EXAMPLE = [
+        'id' => 1,
+        'Title' => 5,
+        'Author First Name' => 6,
+        'Author Last Name' => 4,
+        'Category' => 'Fiction',
+        'Description' => 89,
+        'Price' => 12.58,
+        'On Sale' => 1,
+        'Sale Price' => 10.99,
+        'Image' => '/img/sample_file.jpg'
+    ];
 }
