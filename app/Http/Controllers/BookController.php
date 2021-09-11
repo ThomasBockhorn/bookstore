@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
@@ -33,7 +32,7 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\BookRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(BookRequest $request)

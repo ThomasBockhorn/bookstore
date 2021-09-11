@@ -22,4 +22,18 @@ class CustomerTest extends TestCase
 
         $this->assertDatabaseHas('customers', CustomerTestConstants::CUSTOMER_EXAMPLE);
     }
+
+    /**
+     * Test to see if a user can delete a customer
+     * 
+     * @return void
+     */
+    public function test_to_see_if_user_can_delete_a_customer()
+    {
+        $this->post('/customer', CustomerTestConstants::CUSTOMER_EXAMPLE);
+
+        $this->delete('/customer', CustomerTestConstants::CUSTOMER_EXAMPLE);
+
+        $this->assertDatabaseMissing('customers', CustomerTestConstants::CUSTOMER_EXAMPLE);
+    }
 }
