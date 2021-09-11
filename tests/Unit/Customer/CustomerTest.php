@@ -32,7 +32,7 @@ class CustomerTest extends TestCase
     {
         $this->post('/customer', CustomerTestConstants::CUSTOMER_EXAMPLE);
 
-        $this->delete('/customer', CustomerTestConstants::CUSTOMER_EXAMPLE);
+        $this->delete('/customer/1', CustomerTestConstants::CUSTOMER_EXAMPLE);
 
         $this->assertDatabaseMissing('customers', CustomerTestConstants::CUSTOMER_EXAMPLE);
     }
