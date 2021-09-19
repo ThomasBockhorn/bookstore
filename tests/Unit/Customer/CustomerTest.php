@@ -86,4 +86,17 @@ class CustomerTest extends TestCase
 
         $response->assertSeeText('First Name');
     }
+
+    /**
+     * Test to see if a user can see the edit form
+     * 
+     * @return void
+     */
+    public function test_to_see_if_user_can_see_the_edit_form()
+    {
+
+        $response = $this->get('/customer/1/edit');
+
+        $response->assertSeeText('First Name');
+    }
 }
