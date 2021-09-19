@@ -21,5 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('book', App\Http\Controllers\BookController::class)->middleware('XssSanitizer');
-Route::resource('customer', App\Http\Controllers\CustomerController::class)->middleware('XssSanitizer');
+Route::middleware('XssSanitizer')->group(function () {
+    Route::resource('book', App\Http\Controllers\BookController::class);
+    Route::resource('customer', App\Http\Controllers\CustomerController::class);
+});
