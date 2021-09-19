@@ -97,6 +97,7 @@ class CustomerTest extends TestCase
 
         $response = $this->get('/customer/1/edit');
 
+        $response->assertSeeText('Edit');
         $response->assertSeeText('First Name');
     }
 
