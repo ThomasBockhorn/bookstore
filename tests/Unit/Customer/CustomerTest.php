@@ -99,4 +99,17 @@ class CustomerTest extends TestCase
 
         $response->assertSeeText('First Name');
     }
+
+    /**
+     * Test to see if a user can see the add form
+     * 
+     * @return void
+     */
+    public function test_to_see_if_user_can_see_the_add_customer_form()
+    {
+
+        $response = $this->get('/customer/create');
+
+        $response->assertSeeText('Create');
+    }
 }
