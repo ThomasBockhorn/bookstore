@@ -29,4 +29,17 @@ class CustomerTestConstants
         'Status' => 1,
         'Past Due' => 0
     ];
+
+    const WRONG_CUSTOMER_EXAMPLE = [
+        'First Name' => 4,
+        'Last Name' => 7,
+        'Address Line 1' => 89977777,
+        'Address Line 2' => 44423232,
+        'State' => 'AL',
+        'Zipcode' => 35757,
+        'Phone Number' => '256.679.6197',
+        'Email' => 'Thomas.Bockhorn@tecktonet.com',
+        'Status' => 1,
+        'Past Due' => 0
+    ];
 }
