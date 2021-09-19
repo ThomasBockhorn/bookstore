@@ -24,11 +24,11 @@ class CustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'First Name' => 'required|string|max:255',
-            'Last Name' => 'required|string|max:255',
+            'First Name' => 'required|string|alpha|max:255',
+            'Last Name' => 'required|string|alpha|max:255',
             'Address Line 1' => 'required|string|max:255',
             'Address Line 2' => 'required|string|max:255',
-            'State' => 'required|string',
+            'State' => 'required|alpha|string',
             'Zipcode' => 'required|string',
             'Phone Number' => 'required|string',
             'Email' => 'string',
