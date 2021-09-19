@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
 
@@ -33,7 +32,7 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CustomerRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CustomerRequest $request)
@@ -66,7 +65,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CustomerRequest  $request
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
