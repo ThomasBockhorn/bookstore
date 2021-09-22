@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Comment;
 
 class Book extends Model
 {
@@ -27,4 +28,12 @@ class Book extends Model
         'book_sale_end_date',
         'Image'
     ];
+
+    /**
+     * Sets up the one to many relationship with comment
+     */
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

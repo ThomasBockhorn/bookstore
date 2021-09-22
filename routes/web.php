@@ -24,4 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('XssSanitizer')->group(function () {
     Route::resource('book', App\Http\Controllers\BookController::class);
     Route::resource('customer', App\Http\Controllers\CustomerController::class);
+    Route::resource('comment', App\Http\Controllers\CommentController::class);
 });
