@@ -62,4 +62,16 @@ class CommentTest extends TestCase
 
         $this->assertDatabaseHas('comments', CommentTestConstants::EDITED_SAMPLE_COMMENT);
     }
+
+    /**
+     * Test to see if data is validated before entered into database
+     * 
+     * @return void
+     */
+    public function test_to_see_if_a_data_is_validated()
+    {
+        $this->put('/comment/1', CommentTestConstants::UNVALIDATED_SAMPLE_COMMENT);
+
+        $this->assertDatabaseMissing('comments', CommentTestConstants::UNVALIDATED_SAMPLE_COMMENT);
+    }
 }

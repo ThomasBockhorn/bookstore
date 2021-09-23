@@ -19,4 +19,12 @@ class CommentTestConstants
         'Stars' => 4,
         'Book_ID' => 1
     ];
+
+    const UNVALIDATED_SAMPLE_COMMENT = [
+        'First Name' => 'Thomas',
+        'Last Name' => 1,
+        'Comment' => 5,
+        'Stars' => '5',
+        'Book_ID' => 1
+    ];
 }
