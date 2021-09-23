@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('Last Name');
             $table->text('Comment');
             $table->integer('Stars');
-            $table->foreignId('Book_ID')->constrained('books');
+            $table->foreignId('Book_ID')->constrained('books')->onDelete('cascade');
             $table->timestamps();
         });
     }

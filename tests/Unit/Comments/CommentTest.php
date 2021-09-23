@@ -6,10 +6,27 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\Unit\Book\BookTestConstants\BookTestConstants;
 use App\Models\Book;
+use Tests\Unit\Comments\CommentTestConstants\CommentTestConstants;
 
 class CommentTest extends TestCase
 {
     use DatabaseMigrations;
+
+    /**
+     * Initial setup for each test
+     */
+    protected function setUp(): void
+    {
+        //initializes setup
+        parent::setUp();
+
+        //Creates an book instance
+        $this->post('/book', BookTestConstants::BOOK_EXAMPLE);
+
+        //post a test customer for each test
+        $this->post('/comment', CommentTestConstants::SAMPLE_COMMENT);
+    }
+
 
     /**
      * Test to see if a user can add a comment
@@ -18,18 +35,31 @@ class CommentTest extends TestCase
      */
     public function test_to_see_if_user_can_add_a_comment_to_a_product()
     {
-        $sample_comment = [
-            'First Name' => 'Thomas',
-            'Last Name' => 'Bockhorn',
-            'Comment' => 'This is a sample comment',
-            'Stars' => 5,
-            'Book_ID' => 1
-        ];
 
-        $this->post('/book', BookTestConstants::BOOK_EXAMPLE);
+        $this->assertDatabaseHas('comments', CommentTestConstants::SAMPLE_COMMENT);
+    }
 
-        $this->post('/comment', $sample_comment);
+    /**
+     * Test to see if a user can delete a comment
+     * 
+     * @return void
+     */
+    public function test_to_see_if_a_user_can_delete_a_comment()
+    {
+        $this->delete('/comment/1', CommentTestConstants::SAMPLE_COMMENT);
 
-        $this->assertDatabaseHas('comments', $sample_comment);
+        $this->assertDatabaseMissing('comments', CommentTestConstants::SAMPLE_COMMENT);
+    }
+
+    /**
+     * Test to see if a user can edit a comment
+     * 
+     * @return void
+     */
+    public function test_to_see_if_a_user_can_edit_a_comment()
+    {
+        $this->put('/comment/1', CommentTestConstants::EDITED_SAMPLE_COMMENT);
+
+        $this->assertDatabaseHas('comments', CommentTestConstants::EDITED_SAMPLE_COMMENT);
     }
 }
