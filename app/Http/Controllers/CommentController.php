@@ -11,7 +11,7 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CommentRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CommentRequest $request)
@@ -22,7 +22,7 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CommentRequest  $request
      * @param  \App\Models\Comment $comment
      * @return \Illuminate\Http\Response
      */
